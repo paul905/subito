@@ -1,5 +1,7 @@
 package subito.codingtest.purchase_cart_service.api.controllers;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +19,11 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/order")
+    @PostMapping(value = "/order", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CreateOrderResponse> create(@RequestBody CreateOrderRequest orderRequest) {
-        return ResponseEntity.ok(orderService.createOrder(orderRequest));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(orderService.createOrder(orderRequest));
     }
 
 

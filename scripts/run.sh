@@ -1,1 +1,2 @@
-mvn spring-boot::run
+#!/bin/bash
+./mvnw spring-boot::run

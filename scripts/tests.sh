@@ -1,1 +1,2 @@
-mvn test
+#!/bin/bash
+./mvnw test
